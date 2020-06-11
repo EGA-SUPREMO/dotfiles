@@ -1,0 +1,18 @@
+[user]
+	email = cxiesestro@gmail.com
+	name = EGA-SUPREMO
+	
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	grep = auto
+[core]
+	editor = nano -r 72
+	autocrlf = input
+[help]
+	autocorrect = 50
+[filter "signingkey"]
+	smudge = sed \"s/
+	clean = sed \"s/
