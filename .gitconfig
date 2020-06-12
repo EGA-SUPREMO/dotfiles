@@ -16,3 +16,25 @@
 [filter "signingkey"]
 	smudge = sed \"s/
 	clean = sed \"s/
+[alias]
+	st = status
+	br = branch
+	cm = commit
+	cme = !git add -A && git commit
+	save = !git add -A && git commit -m 'SAVEPOINT'
+	wip = commit -am "WIP"
+	undo = reset HEAD~1 --mixed
+	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+	up = pull --prune
+	co = checkout
+	cob = checkout -b
+	cobf = "!f() { git checkout -b feature/$1; }; f"
+	cobh = "!f() { git checkout -b hotfix/$1; }; f"
+	cobb = "!f() { git checkout -b bugfix/$1; }; f"
+	amend = commit --amend
+
+	default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+
+	return = "!f() { DEFAULT=$(git default); git checkout ${1-$DEFAULT}; }; f"
+
+	lg = log --graph --oneline --decorate --all
