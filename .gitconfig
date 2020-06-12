@@ -28,9 +28,13 @@
 	up = pull --prune
 	co = checkout
 	cob = checkout -b
-	cobf = "!f() { git checkout -b feature/$1; }; f"
-	cobh = "!f() { git checkout -b hotfix/$1; }; f"
-	cobb = "!f() { git checkout -b bugfix/$1; }; f"
+	cobf = "!f() { git checkout -b feature/$1 && git push --set-upstream origin feature/$i; }; f"
+	cobh = "!f() { git checkout -b hotfix/$1 && git push --set-upstream origin hotfix/$i; }; f"
+	cobb = "!f() { git checkout -b bugfix/$1 && git push --set-upstream origin bugfix/$i; }; f"
+
+	cof = "!f() { git checkout feature/$1; }; f"
+	coh = "!f() { git checkout hotfix/$1; }; f"
+	cob = "!f() { git checkout bugfix/$1; }; f"
 	amend = commit --amend
 
 	default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
