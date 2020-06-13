@@ -27,14 +27,17 @@
 	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 	up = pull --prune
 	co = checkout
-	cob = checkout -b
-	cobf = "!f() { git checkout -b feature/$1 && git push --set-upstream origin feature/$i; }; f"
-	cobh = "!f() { git checkout -b hotfix/$1 && git push --set-upstream origin hotfix/$i; }; f"
-	cobb = "!f() { git checkout -b bugfix/$1 && git push --set-upstream origin bugfix/$i; }; f"
+	cob = "!f() { git checkout -b $1; }; f"
+	cobf = "!f() { git checkout -b feature/$1 && git push -u origin HEAD; }; f"
+	cobh = "!f() { git checkout -b hotfix/$1 && git push -u origin HEAD; }; f"
+	cobb = "!f() { git checkout -b bugfix/$1 && git push -u origin HEAD; }; f"
 
 	cof = "!f() { git checkout feature/$1; }; f"
 	coh = "!f() { git checkout hotfix/$1; }; f"
-	cob = "!f() { git checkout bugfix/$1; }; f"
+	codb = "!f() { git checkout bugfix/$1; }; f"
+
+	f = "!f() { echo feature/$1; }; f"
+
 	amend = commit --amend
 
 	default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
@@ -42,3 +45,6 @@
 	return = "!f() { DEFAULT=$(git default); git checkout ${1-$DEFAULT}; }; f"
 
 	lg = log --graph --oneline --decorate --all
+
+[push]
+	default = current
