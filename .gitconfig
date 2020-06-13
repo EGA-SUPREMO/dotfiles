@@ -36,15 +36,14 @@
 	coh = "!f() { git checkout hotfix/$1; }; f"
 	codb = "!f() { git checkout bugfix/$1; }; f"
 
-	f = "!f() { echo feature/$1; }; f"
+	feis = "!f() { echo feature/$1; }; f"
 
 	amend = commit --amend
 
-	default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+	default = !git remote show origin | grep 'HEAD branch' | cut -d' ' -f5
 
 	return = "!f() { DEFAULT=$(git default); git checkout ${1-$DEFAULT}; }; f"
 
 	lg = log --graph --oneline --decorate --all
-
 [push]
 	default = current
