@@ -1,0 +1,10 @@
+d=Miaj ludoj/La evolucio de l' universalo/¿CÓMO LEGALIZAR CUALQUIER COSA.mp4
+git filter-branch -f  --index-filter \
+    'git rm --force --cached --ignore-unmatch $d' \
+     -- --all
+
+git filter-branch --index-filter "git rm -rf --cached --ignore-unmatch $d" HEAD
+     
+  rm -Rf .git/refs/original && \
+    git reflog expire --expire=now --all && \
+    git gc --aggressive && \
