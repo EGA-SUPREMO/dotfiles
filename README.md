@@ -33,4 +33,9 @@ my .dotfiles
 
 ## References
 
+- For `brdone`, `brclean`, `wip`, `save`, `wipe`, `up`, `amend` and `migrate` are from [haacked]
+(https://haacked.com/archive/2014/07/28/github-flow-aliases)
+- For `ffwd`, `ruffwd` and `rupffwd` are from [muhqu](https://github.com/muhqu/dotfiles)
+
+
 ## License
