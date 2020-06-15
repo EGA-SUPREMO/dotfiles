@@ -33,16 +33,16 @@
     rupffwd = !git remote update --prune && git ffwd
 
 	co = checkout
-	cob = "!f() { git checkout -b $1; }; f"
-	cobf = "!f() { git checkout -b feature/$1 && git push -u origin HEAD; }; f"
-	cobh = "!f() { git checkout -b hotfix/$1 && git push -u origin HEAD; }; f"
-	cobb = "!f() { git checkout -b bugfix/$1 && git push -u origin HEAD; }; f"
+	cob = checkout -b
+	cobf = "!f() { git checkout -b feature/$1; }; f"
+	cobh = "!f() { git checkout -b hotfix/$1; }; f"
+	cobb = "!f() { git checkout -b bugfix/$1; }; f"
 
 	cof = "!f() { git checkout feature/$1; }; f"
 	coh = "!f() { git checkout hotfix/$1; }; f"
-	codb = "!f() { git checkout bugfix/$1; }; f"
+#	cob = "!f() { git checkout bugfix/$1; }; f"
 
-	feis = "!f() { echo feature/$1; }; f"
+#	f = "!f() { echo feature/$1; }; f"
 
 	amend = commit --amend
 
@@ -53,6 +53,6 @@
 
 	return = "!f() { DEFAULT=$(git default); git checkout ${1-$DEFAULT}; }; f"
 
-	lg = log --graph --oneline --decorate --all
+	glog = log --graph --oneline --decorate --all
 [push]
 	default = current
