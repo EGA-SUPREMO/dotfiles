@@ -33,4 +33,8 @@ my .dotfiles
 
 ## References
 
+- For `brdone`, `brclean`, `wip`, `save`, `wipe`, `up`, `amend`
+https://haacked.com/archive/2014/07/28/github-flow-aliases
+
+
 ## License
