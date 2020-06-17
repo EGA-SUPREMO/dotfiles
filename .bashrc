@@ -124,7 +124,7 @@ current_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 branch_color() {
-     case $current_branch_var in
+     case $(current_branch) in
          *"feature/"*)
              echo -n "34"
              ;;
@@ -145,15 +145,13 @@ cropped_branch() {
 
 parse_git_branch() {
      current_branch_var=$(current_branch)
-     branch_color_var=$(branch_color)
      (cropped_branch)
-     return $branch_color_var
 }
 #branch_displayed="$(parse_git_branch)"
 #branch_color_var=$?
-export PROMPT_COMMAND="branch_displayed=$(parse_git_branch); branch_color_var=$?; PS1='\[\033[01;37m\][\A] \[\033[32m\]\w\[\033[\$[branch_color_var]m\] \$branch_displayed\[\033[00m\]$ '
+export PROMPT_COMMAND="PS1='\[\033[01;37m\][\A] \[\033[32m\]\w\[\033[\$(branch_color)m\] \$(parse_git_branch)\[\033[00m\]$ '
 #"
-source ~/.git-prompt.sh
+#source ~/.git-prompt.sh
 #PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 #PROMPT_COMMAND='__git_ps1 "\[\033[01;37m\][\A] \[\033[32m\]\w \[\033[00m\]" "\\\$ "'
 #export PS1="\[\033[01;37m\][\A] \[\033[32m\]\w\[\033[\$[BRANCH_COLOR]m\] \$BRANCH_DISPLAYED\[\033[00m\]$ "
