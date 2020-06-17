@@ -116,12 +116,15 @@ if ! shopt -oq posix; then
   fi
 fi
 
+declare -i branch_color_var
+declare -x branch_displayed
+declare -x current_branch_var
 
 current_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/';
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 branch_color() {
-     case $CURRENT_BRANCH in
+     case $current_branch_var in
          *"feature/"*)
              echo -n "34"
              ;;
@@ -137,16 +140,18 @@ branch_color() {
      esac
 }
 cropped_branch() {
-     echo $CURRENT_BRANCH 2> /dev/null | sed -e 's/.*\///'
+     echo $current_branch_var 2> /dev/null | sed -e 's/.*\//\(/'
 }
 
 parse_git_branch() {
-     CURRENT_BRANCH=$(current_branch);
-     BRANCH_COLOR=$(branch_color);
-     (cropped_branch);
-     return $BRANCH_COLOR;
+     current_branch_var=$(current_branch)
+     branch_color_var=$(branch_color)
+     (cropped_branch)
+     return $branch_color_var
 }
-BRANCH_DISPLAYED="$(parse_git_branch)"
-BRANCH_COLOR=$?
+branch_displayed="$(parse_git_branch)"
+branch_color_var=$?
+export PROMPT_COMMAND="branch_displayed=$(parse_git_branch); branch_color_var=$?; PS1='\[\033[01;37m\][\A] \[\033[32m\]\w\[\033[\$[branch_color_var]m\] \$branch_displayed\[\033[00m\]$ '
+"
 
-export PS1="\[\033[01;37m\][\A] \[\033[32m\]\w\[\033[\$[BRANCH_COLOR]m\] (\$BRANCH_DISPLAYED\[\033[00m\]$ "
+#export PS1="\[\033[01;37m\][\A] \[\033[32m\]\w\[\033[\$[BRANCH_COLOR]m\] \$BRANCH_DISPLAYED\[\033[00m\]$ "
