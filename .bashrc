@@ -116,9 +116,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-declare -i branch_color_var
-declare -x branch_displayed
-declare -x current_branch_var
+#declare -i branch_color_var
+#declare -x branch_displayed
+#declare -x current_branch_var
 
 current_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -149,9 +149,11 @@ parse_git_branch() {
      (cropped_branch)
      return $branch_color_var
 }
-branch_displayed="$(parse_git_branch)"
-branch_color_var=$?
+#branch_displayed="$(parse_git_branch)"
+#branch_color_var=$?
 export PROMPT_COMMAND="branch_displayed=$(parse_git_branch); branch_color_var=$?; PS1='\[\033[01;37m\][\A] \[\033[32m\]\w\[\033[\$[branch_color_var]m\] \$branch_displayed\[\033[00m\]$ '
-"
-
+#"
+source ~/.git-prompt.sh
+#PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+#PROMPT_COMMAND='__git_ps1 "\[\033[01;37m\][\A] \[\033[32m\]\w \[\033[00m\]" "\\\$ "'
 #export PS1="\[\033[01;37m\][\A] \[\033[32m\]\w\[\033[\$[BRANCH_COLOR]m\] \$BRANCH_DISPLAYED\[\033[00m\]$ "
