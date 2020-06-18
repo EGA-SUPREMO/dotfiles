@@ -116,12 +116,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
 current_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/';
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 branch_color() {
-     case $CURRENT_BRANCH in
+     case $(current_branch) in
          *"feature/"*)
              echo -n "34"
              ;;
@@ -137,16 +136,8 @@ branch_color() {
      esac
 }
 cropped_branch() {
-     echo $CURRENT_BRANCH 2> /dev/null | sed -e 's/.*\///'
+     echo "$(current_branch)" | sed -e 's/.*\// \(/' 
 }
 
-parse_git_branch() {
-     CURRENT_BRANCH=$(current_branch);
-     BRANCH_COLOR=$(branch_color);
-     (cropped_branch);
-     return $BRANCH_COLOR;
-}
-BRANCH_DISPLAYED="$(parse_git_branch)"
-BRANCH_COLOR=$?
-
-export PS1="\[\033[01;37m\][\A] \[\033[32m\]\w\[\033[\$[BRANCH_COLOR]m\] (\$BRANCH_DISPLAYED\[\033[00m\]$ "
+export PROMPT_COMMAND="PS1='\[\033[01;37m\][\A] \[\033[32m\]\w\[\033[\$(branch_color)m\]\$(cropped_branch)\[\033[00m\]$ '
+#"
