@@ -4,7 +4,7 @@ alias ist='vnstat -i enxfcde56ff0106'
 alias onegai='echo sudo $(fc -ln -1) ; sudo $(fc -ln -1)'
 # baka | Version control [baka pull master, baka push master]
 alias baka='git'
-# This may overlap with other command in your environment
+# This may overlap with other commands in your environment
 alias gt='git'
 # download videos in 720p, 480p, 360p and 240p if availible
 # --merge-output-format, may be I need this, TODO make a command to download low quality video and high quality audio
