@@ -38,15 +38,15 @@ my .dotfiles
         - `brdone` goes to the main branch, updates with `git up` and cleans with `brclean`
         - `migrate` explanation from [this post](https://haacked.com/archive/2015/06/29/git-migrate/):
 
-If I’m on a branch and want to migrate the local only commits over to master, I can just run `git migrate new-branch-name`. This works whether I’m on master or some other wrong branch.
+If I’m on a branch and want to migrate the local only commits over to master, I can just run `$ git migrate new-branch-name`. This works whether I’m on master or some other wrong branch.
 
-I can also migrate the commits to a branch created off of something other than master using this command: `git migrate new-branch other-branch`
+I can also migrate the commits to a branch created off of something other than master using this command: `$ git migrate new-branch other-branch`
 
 And finally, if I want to just migrate the last commit to a new branch created off of master, I can do this.
 
-`git migrate new-branch master HEAD~1`
+`$ git migrate new-branch master HEAD~1`
 
-| parameter     | type     | Description                                                             |
+| Parameter     | Type     | Description                                                             |
 |---------------|----------|-------------------------------------------------------------------------|
 | branch-name   | required | Name of the new branch.                                                 |
 | target-branch | optional | Defaults to "master". The branch that the new branch is created off of. |
