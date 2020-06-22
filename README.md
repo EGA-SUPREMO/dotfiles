@@ -31,12 +31,19 @@ my .dotfiles
 	- `default` prints the main branch
     - `ffwd` to update all tracking branches, [more info](http://stackoverflow.com/questions/9076361)
 
-## References
+## Bash Aliases
+- `ist` for **I**nternet usage **ST**atistic
+- `onegai` to execute the previous command as `sudo`
+- `baka` for `git` e.g. `baka pull master`, `baka push master`.
+- `gt` for `git`, this may overlap with other commands in your environment
+- `phpl` for `php artisan`
+- `d7`, `d4`, `d3`, `d2`, goes to Downloads folder and downloads videos using [youtube-dl](https://github.com/ytdl-org/youtube-dl) in 720p, 480p, 360p or 240p if available
+- `dm7`, `dm4`, `dm3`, `dm2` same as above but goes to Music instead.
 
+## References
 - For `brdone`, `brclean`, `wip`, `save`, `wipe`, `up`, `amend` and `migrate` are from [haacked](https://haacked.com/archive/2014/07/28/github-flow-aliases)
 - For `ffwd`, `ruffwd` and `rupffwd` are from [muhqu](https://github.com/muhqu/dotfiles)
 
 
 ## License
-
 MIT
