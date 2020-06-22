@@ -37,11 +37,14 @@ my .dotfiles
         - `brd` deletes every branch whose remote tracking branch is gone, this also uses `-D`
         - `brdone` goes to the main branch, updates with `git up` and cleans with `brclean`
         - `migrate` 
+
+
 | parameter     | type     | Description                                                             |
 |---------------|----------|-------------------------------------------------------------------------|
 | branch-name   | required | Name of the new branch.                                                 |
-| target-branch | optional | Defaults to “master”. The branch that the new branch is created off of. |
+| target-branch | optional | Defaults to "master". The branch that the new branch is created off of. |
 | commit-range  | optional | The commits to migrate. Defaults to the current remote tracking branch. |
+
         [more info](https://haacked.com/archive/2015/06/29/git-migrate/)
 - Helpers
 	- `default` prints the main branch
