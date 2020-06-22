@@ -7,17 +7,21 @@ my .dotfiles
     - `cme` to add everything and commit
     - `co` for `checkout`
     - `cob` for `checkout -b`
-    - `amend` for `commit --amend`
+    - `fixup` for `commit --amend`
     - `st` for `status`
     - `br` for `branch`
 - Specific for my development
     - `cobf` for `checkout -b feature/<arg name of the branch>`
     - `cobb` for `checkout -b hotfix/<arg name of the branch>`
     - `cobh` for `checkout -b bugfix/<arg name of the branch>`
+    - `cobr` for `checkout -b release/<arg name of the branch>`
     - `cof` for `checkout feature/<arg name of the branch>`
-    - `cof` for `checkout hotfix/<arg name of the branch>`
+    - `coh` for `checkout hotfix/<arg name of the branch>`
+    - `cor` for `checkout release/<arg name of the branch>`
     - `return` to checkout to the main branch
-    - `glog` to get a good log using `log --graph --oneline --decorate --all`
+    - `glog` to get a good log
+    - `slog` to get a good short log
+    - `sdlog` same as above but includes dates
     - `save` to add all changes including untracked files and do a temporal commit, I typically use this along with `undo` or `amend`
     - `wip`same to save but doesn't add untracked files
     - `undo` to reset the previous commit
@@ -25,7 +29,7 @@ my .dotfiles
     - `up` to update the current branch, it's possible this will removed and instead use `ruffwd` or `rupffwd`
     - Complex
         - `ruffwd` and `rupffwd` do `remote update`, the later one with `--prune` and updates all tracking branches, see helper `ffwd`
-        - `brclean` deletes every branch that’s been merged into the specified branch except the branch, when no branch is specified, it uses the main branch
+        - `brclean` deletes every branch that’s been merged into the specified branch except the branch, when no branch is specified, it uses the default branch
         - `brdone` goes to the main branch, updates with `git up` and cleans with `brclean`
 - Helpers
 	- `default` prints the main branch
@@ -41,7 +45,7 @@ my .dotfiles
 - `dm7`, `dm4`, `dm3`, `dm2` same as above but goes to Music instead.
 
 ## References
-- For `brdone`, `brclean`, `wip`, `save`, `wipe`, `up`, `amend` and `migrate` are from [haacked](https://haacked.com/archive/2014/07/28/github-flow-aliases)
+- For `brdone`, `brclean`, `wip`, `save`, `wipe`, `up` and `migrate` are from [haacked](https://haacked.com/archive/2014/07/28/github-flow-aliases)
 - For `ffwd`, `ruffwd` and `rupffwd` are from [muhqu](https://github.com/muhqu/dotfiles)
 
 
