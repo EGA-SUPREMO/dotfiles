@@ -36,8 +36,15 @@ my .dotfiles
         - `brunsafed` deletes every branch using `-D` that aren't the default, 'master', 'development', 'develop' or 'dev', stands for **BR**anch **UNSAFE D**elete
         - `brd` deletes every branch whose remote tracking branch is gone, this also uses `-D`
         - `brdone` goes to the main branch, updates with `git up` and cleans with `brclean`
-        - `migrate` 
+        - `migrate` explanation from [this post](https://haacked.com/archive/2015/06/29/git-migrate/):
 
+If I’m on a branch and want to migrate the local only commits over to master, I can just run `git migrate new-branch-name`. This works whether I’m on master or some other wrong branch.
+
+I can also migrate the commits to a branch created off of something other than master using this command: `git migrate new-branch other-branch`
+
+And finally, if I want to just migrate the last commit to a new branch created off of master, I can do this.
+
+`git migrate new-branch master HEAD~1`
 
 | parameter     | type     | Description                                                             |
 |---------------|----------|-------------------------------------------------------------------------|
@@ -45,7 +52,6 @@ my .dotfiles
 | target-branch | optional | Defaults to "master". The branch that the new branch is created off of. |
 | commit-range  | optional | The commits to migrate. Defaults to the current remote tracking branch. |
 
-        [more info](https://haacked.com/archive/2015/06/29/git-migrate/)
 - Helpers
 	- `default` prints the main branch
     - `ffwd` to update all tracking branches, [more info](http://stackoverflow.com/questions/9076361)
