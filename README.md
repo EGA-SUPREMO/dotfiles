@@ -8,6 +8,7 @@ my .dotfiles
     - `co` for `checkout`
     - `cob` for `checkout -b`
     - `fixup` for `commit --amend`
+    - `cp` for `cherry-pick`
     - `st` for `status`
     - `br` for `branch`
 - Specific for my development
@@ -23,14 +24,19 @@ my .dotfiles
     - `slog` to get a good short log
     - `sdlog` same as above but includes dates
     - `save` to add all changes including untracked files and do a temporal commit, I typically use this along with `undo` or `amend`
-    - `wip`same to save but doesn't add untracked files
+    - `wip` same to `save` but doesn't add untracked files
     - `undo` to reset the previous commit
     - `wipe` to commit everything in the working directory and then does a hard reset to remove that commit, but that commit can be restored.
     - `up` to update the current branch, it's possible this will removed and instead use `ruffwd` or `rupffwd`
+    - `sync` to synchronize the repo, it uses `up` to pull and `git push`
+    - `aliases` shows all git aliases
     - Complex
         - `ruffwd` and `rupffwd` do `remote update`, the later one with `--prune` and updates all tracking branches, see helper `ffwd`
         - `brclean` deletes every branch that’s been merged into the specified branch except the branch, when no branch is specified, it uses the default branch
+        - `brunsafed` deletes every branch using `-D` that aren't the default, 'master', 'development', 'develop' or 'dev', stands for **BR**anch **UNSAFE D**elete
+        - `brd` deletes every branch whose remote tracking branch is gone, this also uses `-D`
         - `brdone` goes to the main branch, updates with `git up` and cleans with `brclean`
+        - `migrate`
 - Helpers
 	- `default` prints the main branch
     - `ffwd` to update all tracking branches, [more info](http://stackoverflow.com/questions/9076361)
