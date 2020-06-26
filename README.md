@@ -65,10 +65,29 @@ And finally, if I want to just migrate the last commit to a new branch created o
 - `d7`, `d4`, `d3`, `d2`, goes to Downloads folder and downloads videos using [youtube-dl](https://github.com/ytdl-org/youtube-dl) in 720p, 480p, 360p or 240p if available
 - `dm7`, `dm4`, `dm3`, `dm2` same as above but goes to Music instead.
 
+## How I configured my terminal
+
+This is from [Coder's Tape Deployment Guide](https://gist.github.com/vicgonvt/cd0431a5cdc043ebab7f4954f7b4d471#extra-credit):
+
+Let's make the prompt pretty
+
++ `sudo apt-get install zsh` to install ZSH
++ `zsh --version` to confirm install
++ `whereis zsh` to find out where it is
++ `sudo usermod -s /usr/bin/zsh $(whoami)` to make Zsh default
++ `sudo reboot` to reapply all changes
++ `2` to populate a default file
++ `sudo apt-get install powerline fonts-powerline` to install powerline
++ `sudo apt-get install zsh-theme-powerlevel9k` to install Theme
++ `echo "source /usr/share/powerlevel9k/powerlevel9k.zsh-theme" >> ~/.zshrc` to enable the theme in your Zshrc
++ `exit` and login again to see the new theme
++ `sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"` for Oh My Zsh
++ `echo "source /usr/share/powerlevel9k/powerlevel9k.zsh-theme" >> ~/.zshrc` to re-enable 9K
+
 ## References
 - For `brdone`, `brclean`, `wip`, `save`, `wipe`, `up` and `migrate` are from [haacked](https://haacked.com/archive/2014/07/28/github-flow-aliases)
 - For `ffwd`, `ruffwd` and `rupffwd` are from [muhqu](https://github.com/muhqu/dotfiles)
-
+- For [How I configured my terminal](#how-i-configured-my-terminal) section is from [Coder's Tape Deployment Guide](https://gist.github.com/vicgonvt/cd0431a5cdc043ebab7f4954f7b4d471#extra-credit)
 
 ## License
 MIT
