@@ -50,7 +50,9 @@ And finally, if I want to just migrate the last commit to a new branch created o
 |---------------|----------|-------------------------------------------------------------------------|
 | branch-name   | required | Name of the new branch.                                                 |
 | target-branch | optional | Defaults to "master". The branch that the new branch is created off of. |
-| commit-range  | optional | The commits to migrate. Defaults to the current remote tracking branch. |
+| commit-range  | required | The commits to migrate. |
+
+**Note: this is slightly modified version where the third param is required, and it's possible that because of that the second is also required, but I haven't tested yet. If you want to avoid error, just pass always the second param.**
 
 - Helpers
 	- `default` prints the main branch
