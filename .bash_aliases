@@ -5,7 +5,7 @@ alias onegai='echo sudo $(fc -ln -1) ; sudo $(fc -ln -1)'
 # baka | Version control [baka pull master, baka push master]
 alias baka='git'
 # This may overlap with other commands in your environment
-alias gt='git'
+alias g='git'
 # download videos in 720p, 480p, 360p and 240p if availible
 # --merge-output-format, may be I need this, TODO make a command to download low quality video and high quality audio
 alias d7="cd ~/Downloads && youtube-dl -f 'bestvideo[height<=720]+bestaudio[ext=m4a]/best[height<=720]' $1"
@@ -19,4 +19,6 @@ alias dm3="cd ~/Music && youtube-dl -f 'bestvideo[height<=360]+bestaudio[ext=m4a
 alias dm2="cd ~/Music && youtube-dl -f 'bestvideo[height<=240]+bestaudio[ext=m4a]/best[height<=240]' $1"
 
 # Laravel aliases
-alias phpl="php artisan"
+alias pl="php artisan"
+alias pls="php artisan serve"
+alias plt="php artisan test"

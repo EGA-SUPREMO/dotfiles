@@ -61,7 +61,7 @@ And finally, if I want to just migrate the last commit to a new branch created o
 - `ist` for **I**nternet usage **ST**atistic, it requires `vnstat`
 - `onegai` to execute the previous command as `sudo`
 - `baka` for `git` e.g. `baka pull master`, `baka push master`.
-- `gt` for `git`, this may overlap with other commands in your environment
+- `g` for `git`, this may overlap with other commands in your environment
 - `phpl` for `php artisan`
 - `d7`, `d4`, `d3`, `d2`, goes to Downloads folder and downloads videos using [youtube-dl](https://github.com/ytdl-org/youtube-dl) in 720p, 480p, 360p or 240p if available
 - `dm7`, `dm4`, `dm3`, `dm2` same as above but goes to Music instead.
