@@ -101,3 +101,4 @@ source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
 
 . ~/.bash_aliases
 . ~/.dir_aliases
+. ~/.dv

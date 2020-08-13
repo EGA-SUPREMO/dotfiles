@@ -1,0 +1,48 @@
+#!/bin/bash
+#
+# download videos in 720p, 480p, 360p and 240p if availible
+# --merge-output-format, may be I need this
+#  --write-sub --embed-subs  for subs meybe is importent
+#  calidad de vidio vaja pls
+#  -o '%(title)s.%(ext)s'
+
+dv() {
+    case $1 in
+        *"1"*)
+            echo -n "144p selected, pls press Ctrl+C or wait 10 seconds" && sleep 10s &&
+            QUALITY=144
+            ;;
+        *"2"*)
+            QUALITY=240
+            ;;
+        *"3"*)
+            QUALITY=360
+            ;;
+        *"4"*)
+            QUALITY=480
+            ;;
+        *"7"*)
+            QUALITY=720
+            ;;
+        *"10"*)
+            QUALITY=1080
+            ;;
+        *)
+            echo -n "${0}: Error invalid quality arg"
+            ;;
+    esac
+
+    case $4 in
+        *"mp4"*)
+            FORMAT="bestvideo[ext=mp4][height<=${QUALITY}]+worstaudio[ext=m4a]/best=[ext=mp4][height<=${QUALITY}]"
+            ;;
+        *"h"*)
+            FORMAT="bestvideo[ext=mp4][height<=${QUALITY}]+worstaudio[ext=m4a]/best=[ext=mp4][height<=${QUALITY}]"
+            ;;
+        *)
+            FORMAT='bestvideo[height<="$QUALITY"]+bestaudio/best=[height<="$QUALITY"]'
+            ;;
+    esac
+
+    echo "~${3-d} && youtube-dl -R 'infinite' -f $FORMAT $2"
+}
