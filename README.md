@@ -28,7 +28,8 @@ my .dotfiles
     - `undo` to reset the previous commit
     - `wipe` to commit everything in the working directory and then does a hard reset to remove that commit, but that commit can be restored.
     - `up` to update the current branch, it's possible this will removed and instead use `ruffwd` or `rupffwd`
-    - `sync` to synchronize the repo, it uses `up` to pull and `git push`
+    - `down` to push all branchs and tags
+    - `sync` to synchronize the repo, it uses `up` to pull and `down` to push
     - `aliases` shows all git aliases
     - Complex
         - `ruffwd` and `rupffwd` do `remote update`, the later one with `--prune` and updates all tracking branches, see helper `ffwd`
