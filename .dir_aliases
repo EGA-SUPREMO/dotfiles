@@ -1,0 +1,6 @@
+#!/bin/bash
+hash -d g='/home/alejandro/Documents/Novaj git-oj'
+hash -d d='/home/alejandro/Downloads'
+hash -d v='/home/alejandro/Videos'
+hash -d m='/home/alejandro/Music'
+setopt AUTO_CD
