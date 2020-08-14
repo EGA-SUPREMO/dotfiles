@@ -34,10 +34,13 @@ dv() {
 
     case $4 in
         *"mp4"*)
-            FORMAT="bestvideo[ext=mp4][height<=${QUALITY}]+worstaudio[ext=m4a]/best=[ext=mp4][height<=${QUALITY}]"
+            FORMAT="bestvideo[ext=mp4][height<=${QUALITY}]+bestaudio[ext=m4a]/best=[ext=mp4][height<=${QUALITY}]"
             ;;
-        *"h"*)
-            FORMAT="bestvideo[ext=mp4][height<=${QUALITY}]+worstaudio[ext=m4a]/best=[ext=mp4][height<=${QUALITY}]"
+        *"w"*)
+            if [[ $3 = 'm' ]]; then
+                echo -n "are you sure you want to download a music with worstaudio? press Ctrl+C or wait 10 seconds" && sleep 10s
+            fi
+            FORMAT="bestvideo[height<=${QUALITY}]+worstaudio/best=[height<=${QUALITY}]"
             ;;
         *)
             FORMAT='bestvideo[height<="$QUALITY"]+bestaudio/best=[height<="$QUALITY"]'
