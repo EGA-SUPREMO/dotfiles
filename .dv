@@ -1,12 +1,24 @@
 #!/bin/bash
 #
-# download videos in 720p, 480p, 360p and 240p if availible
-# --merge-output-format, may be I need this
+# download videos in 720p, 480p, etc. if availible
 #  --write-sub --embed-subs  for subs meybe is importent
-#  calidad de vidio vaja pls
 #  -o '%(title)s.%(ext)s'
-
 dv() {
+    if [ $# = '0' ]; then
+        cat <<HELP_USAGE
+Welcome to Yet Another Video Downloader!
+USAGE:
+    $0 <quality> <link or yt id> [localization] [extra]
+
+    quality        The max quality of the video, e.g for 240 is 2, for 720 is 7, for 1080 is 10
+    link or yt id  Link of the video or the id of the youtube video
+    localization   Localization of the downloaded file, e.g. ~/home
+
+    extra          Currently it only accepts two:
+        w              For download the video with the worstaudio available
+        mp4            Download video in MP4 format
+HELP_USAGE
+    else # Dont know how to exit program without closing tab
     case $1 in
         *"1"*)
             echo -n "144p selected, pls press Ctrl+C or wait 10 seconds" && sleep 10s &&
@@ -47,5 +59,6 @@ dv() {
             ;;
     esac
 
-    echo "~${3-d} && youtube-dl -R 'infinite' -f $FORMAT $2"
+    ~${3-d} && youtube-dl -R 'infinite' -f $FORMAT $2
+    fi
 }
