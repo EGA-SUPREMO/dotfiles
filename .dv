@@ -1,22 +1,35 @@
 #!/bin/bash
 #
-# download videos in 720p, 480p, etc. if availible
+# Download videos in 720p, 480p, etc. if availible
 #  --write-sub --embed-subs  for subs meybe is importent
 #  -o '%(title)s.%(ext)s'
 dv() {
     if [ $# = '0' ]; then
         cat <<HELP_USAGE
 Welcome to Yet Another Video Downloader!
+
+Requirements:
+    You need to define the default downloads folder as '~d' e.g.
+
+    $ hash -d d='Your path to the downloads folder' # mine is '/home/alejandro/Downloads'
+
 USAGE:
-    $0 <quality> <link or yt id> [localization] [extra]
+    $0 <quality> <link> [localization] [extra]
 
-    quality        The max quality of the video, e.g for 240 is 2, for 720 is 7, for 1080 is 10
-    link or yt id  Link of the video or the id of the youtube video
-    localization   Localization of the downloaded file, e.g. ~/home
+    quality        Max quality of the video but divided by 100 and rounded by default,
+                      e.g for 240p is '2', for 720p is '7', for 1080 is '10'
+    link           Link of the video or the id or full name of the youtube video. see
+                      youtube-dl readme for more info:
+                      https://github.com/ytdl-org/youtube-dl
+    localization   Localization of the downloaded file, defaults to '~d'.
 
-    extra          Currently it only accepts two:
-        w              For download the video with the worstaudio available
+    extra          Currently it only accepts two options, and it can't be mixed:
+        w              Downloads the video with the worst audio available
         mp4            Download video in MP4 format
+
+Note:
+You cannot change the order of the arguments, because I'm lazy, but I accept PRs!
+https://github.com/EGA-SUPREMO/dotfiles
 HELP_USAGE
     else # Dont know how to exit program without closing tab
     case $1 in
@@ -59,6 +72,6 @@ HELP_USAGE
             ;;
     esac
 
-    ~${3-d} && youtube-dl -R 'infinite' -f $FORMAT $2
+    cd ~${3-d} && youtube-dl -R 'infinite' -f $FORMAT $2
     fi
 }

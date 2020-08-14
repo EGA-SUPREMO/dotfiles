@@ -61,8 +61,38 @@ And finally, if I want to just migrate the last commit to a new branch created o
 - `ist` for **I**nternet usage **ST**adistic, it requires `vnstat`
 - `onegai` to execute the previous command as `sudo`
 - `baka` for `git` e.g. `baka pull master`, `baka push master`.
+
+### Laravel
 - `pl` for `php artisan`
-- `d7`, `d4`, `d3`, `d2`, goes to Downloads folder and downloads videos using [youtube-dl](https://github.com/ytdl-org/youtube-dl) in 720p, 480p, 360p or 240p if available
+- `pls` for `php artisan serve`
+- `plt` for `php artisan test`
+
+## Commands
+### Yet Another Video Downloader!
+- `dv`, goes to Downloads folder and downloads videos using [youtube-dl](https://github.com/ytdl-org/youtube-dl) in the specified quality or lower.
+
+#### Requirements
+- You need to define the default downloads folder as `~d` e.g.
+```sh
+hash -d d='Your path to the downloads folder' # mine its '/home/alejandro/Downloads'
+```
+
+#### Usage
+```sh
+    $ dv <quality> <link> [localization] [extra]
+```
+* quality:        Max quality of the video but divided by 100 and rounded by default,
+                      e.g for 240p is `2`, for 720p is `7`, for 1080 is `10`
+* link:           Link of the video or the id or full name of the youtube video. see
+                      [youtube-dl readme for more info](https://github.com/ytdl-org/youtube-dl)
+* localization:   Localization of the downloaded file, defaults to `~d`.
+
+* extra:          Currently it only accepts two options, and it can't be mixed:
+    * w              Downloads the video with the worst audio available
+    * mp4            Downloads video in MP4 format
+
+Note:
+You cannot change the order of the arguments, because I'm lazy, but I can accept PRs!
 
 ## How I configured my terminal
 
