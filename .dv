@@ -1,0 +1,77 @@
+#!/bin/bash
+#
+# Download videos in 720p, 480p, etc. if availible
+#  --write-sub --embed-subs  for subs meybe is importent
+#  -o '%(title)s.%(ext)s'
+dv() {
+    if [ $# = '0' ]; then
+        cat <<HELP_USAGE
+Welcome to Yet Another Video Downloader!
+
+Requirements:
+    You need to define the default downloads folder as '~d' e.g.
+
+    $ hash -d d='Your path to the downloads folder' # mine is '/home/alejandro/Downloads'
+
+USAGE:
+    $0 <quality> <link> [localization] [extra]
+
+    quality        Max quality of the video but divided by 100 and rounded by default,
+                      e.g for 240p is '2', for 720p is '7', for 1080 is '10'
+    link           Link of the video or the id or full name of the youtube video. see
+                      youtube-dl readme for more info:
+                      https://github.com/ytdl-org/youtube-dl
+    localization   Localization of the downloaded file, defaults to '~d'.
+
+    extra          Currently it only accepts two options, and it can't be mixed:
+        w              Downloads the video with the worst audio available
+        mp4            Download video in MP4 format
+
+Note:
+You cannot change the order of the arguments, because I'm lazy, but I accept PRs!
+https://github.com/EGA-SUPREMO/dotfiles
+HELP_USAGE
+    else # Dont know how to exit program without closing tab
+    case $1 in
+        *"1"*)
+            echo -n "144p selected, pls press Ctrl+C or wait 10 seconds" && sleep 10s &&
+            QUALITY=144
+            ;;
+        *"2"*)
+            QUALITY=240
+            ;;
+        *"3"*)
+            QUALITY=360
+            ;;
+        *"4"*)
+            QUALITY=480
+            ;;
+        *"7"*)
+            QUALITY=720
+            ;;
+        *"10"*)
+            QUALITY=1080
+            ;;
+        *)
+            echo -n "${0}: Error invalid quality arg"
+            ;;
+    esac
+
+    case $4 in
+        *"mp4"*)
+            FORMAT="bestvideo[ext=mp4][height<=${QUALITY}]+bestaudio[ext=m4a]/best=[ext=mp4][height<=${QUALITY}]"
+            ;;
+        *"w"*)
+            if [[ $3 = 'm' ]]; then
+                echo -n "are you sure you want to download a music with worstaudio? press Ctrl+C or wait 10 seconds" && sleep 10s
+            fi
+            FORMAT="bestvideo[height<=${QUALITY}]+worstaudio/best=[height<=${QUALITY}]"
+            ;;
+        *)
+            FORMAT='bestvideo[height<="$QUALITY"]+bestaudio/best=[height<="$QUALITY"]'
+            ;;
+    esac
+
+    cd ~${3-d} && youtube-dl -R 'infinite' -f $FORMAT $2
+    fi
+}
