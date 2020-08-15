@@ -68,10 +68,10 @@ HELP_USAGE
             FORMAT="bestvideo[height<=${QUALITY}]+worstaudio/best=[height<=${QUALITY}]"
             ;;
         *)
-            FORMAT='bestvideo[height<="$QUALITY"]+bestaudio/best=[height<="$QUALITY"]'
+            FORMAT="bestvideo[height<=${QUALITY}]+bestaudio/best=[height<=${QUALITY}]"
             ;;
     esac
 
-    cd ~${3-d} && youtube-dl -R 'infinite' -f $FORMAT $2
+    cd ${3-~d} && youtube-dl -R 'infinite' -f $FORMAT $2
     fi
 }
