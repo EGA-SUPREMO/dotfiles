@@ -1,7 +1,6 @@
 #!/bin/bash
 #
-# Download videos in 720p, 480p, etc. if availible
-#  --write-sub --embed-subs  for subs meybe is importent
+# Downloads videos in 720p, 480p, etc. if availible
 #  -o '%(title)s.%(ext)s'
 dv() {
     if [ $# = '0' ]; then
@@ -11,18 +10,22 @@ Welcome to Yet Another Video Downloader!
 USAGE:
     $0 <quality> <link> [localization] [extra]
 
-    quality        Max quality of the video,
-                      e.g for 240p is '2', for 720p is '7', for 1080 is '10'
-    link           Link of the video or the id or full name of the youtube video. see
+    quality        Max quality of the video, e.g. 240, 360, etc
+    link           Link of the video, the id or full name of the youtube video. see
                       youtube-dl readme for more info:
                       https://github.com/ytdl-org/youtube-dl
-    localization   Localization of the downloaded file, defaults to '~d'.
+    localization   Localization of the downloaded file, defaults to '~/Downloads'.
 
     extra          Currently it only accepts two options, and it can't be mixed:
         w              Downloads the video with the worst audio available
         nv             No video, downloads only audio
         na             No audio, downloads only video
         mp4            Download video in MP4 format
+Current Aliases:
+    alias dv2="dv 240"
+    alias dv3="dv 360"
+    ...
+    alias dv10="dv 1080"
 
 Note:
 You cannot change the order of the arguments, because I'm lazy, but I accept PRs!
@@ -41,7 +44,7 @@ HELP_USAGE
                 FORMAT="-f bestvideo[height<=${1}]+worstaudio/best=[height<=${1}]"
                 ;;
             *"s"*)
-                FORMAT=$FORMAT'--write-sub --sub-lang en,es ' # Doesnt work
+                youtube-dl --skip-download $2 --write-sub --sub-lang en,es
                 ;;
             *"nv"*)
                 FORMAT="-f bestaudio"
