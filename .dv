@@ -63,3 +63,17 @@ alias dv3="dv 360"
 alias dv4="dv 480"
 alias dv7="dv 720"
 alias dv10="dv 1080"
+
+# 'aliases' to download music without needing to tell the dir
+dv2m() { dv2 $1 ~/Music $2; }
+dv3m() { dv3 $1 ~/Music $2; }
+dv4m() { dv4 $1 ~/Music $2; }
+dv7m() { dv7 $1 ~/Music $2; }
+dv10m() { dv10 $1 ~/Music $2; }
+
+# 'aliases' to download videos without needing to tell the dir
+dv2v() { dv2 $1 ~/Videos $2; }
+dv3v() { dv3 $1 ~/Videos $2; }
+dv4v() { dv4 $1 ~/Videos $2; }
+dv7v() { dv7 $1 ~/Videos $2; }
+dv10v() { dv10 $1 ~/Videos $2; }
