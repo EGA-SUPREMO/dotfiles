@@ -113,6 +113,21 @@ Let's make the prompt pretty
 + `sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"` for Oh My Zsh
 + `echo "source /usr/share/powerlevel9k/powerlevel9k.zsh-theme" >> ~/.zshrc` to re-enable 9K
 
+## Installing zsh-vi-mode
+As an Oh My Zsh! custom plugin
+Clone zsh-vi-mode into your custom plugins repo
+```
+git clone https://github.com/jeffreytse/zsh-vi-mode \
+  $ZSH_CUSTOM/plugins/zsh-vi-mode
+```
+Then load as a plugin in your .zshrc
+```
+plugins+=(zsh-vi-mode)
+```
+Keep in mind that plugins need to be added before oh-my-zsh.sh is sourced.
+
+
+
 ## References
 - For `brdone`, `brclean`, `wip`, `save`, `wipe`, `up` and `migrate` are from [haacked](https://haacked.com/archive/2014/07/28/github-flow-aliases)
 - For `ffwd`, `ruffwd` and `rupffwd` are from [muhqu](https://github.com/muhqu/dotfiles)
